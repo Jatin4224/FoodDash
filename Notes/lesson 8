@@ -1,0 +1,366 @@
+//lets get classy
+
+// topics covered ->
+
+// 1.class based components
+// 2.creating our own class based components
+// 3.life cycle of class based components
+// 4.React lifecycle methods
+
+//i will build about us page and teach u about classs based components it s the old way of writing components but its imp to know for interviws.
+
+//i build feature in which fetch data from githubs and i will use classbased components for developing that.
+
+//first: i will create functional component then ill convert it into class based component
+
+//creating user component
+// User.js
+const User = () => {
+  return (
+    <div className="user-card">
+      <h2>name: jatin</h2>
+      <h3>Location: kota</h3>
+      <h4>contact : @jatin4224 </h4>
+    </div>
+  );
+};
+
+export default User;
+
+//import this component into about us page
+
+
+// About.js
+import User from "/user";
+
+const About = () => {
+    return (
+      <div className="resume">
+        <h1>About</h1>
+        <h2>this is foodapp </h2>
+        <User /> 
+      </div>
+    );
+  };
+  
+  export default About;
+  
+
+  //add css to make it look good 
+
+
+
+// second: now i will convert this user component into classBased component.
+
+
+// ill create one more file for this component named UserClass.js
+
+
+//- class based component is basically normal javascript class
+
+
+
+import React from "react";
+
+class UserClass extends React.Component {
+          
+
+    //this render method will return pieace of jsx
+           render() {
+            <div className="user-card">
+            <h2>name: jatin</h2>
+            <h3>Location: kota</h3>
+            <h4>contact : @jatin4224 </h4>
+          </div>
+           }
+
+}
+
+export default UserClass;
+
+
+
+
+// import it in about us page 
+
+
+import User from "/user";
+import UserClass from "/UserClass";
+
+
+const About = () => {
+    return (
+      <div className="resume">
+        <h1>About</h1>
+        <h2>this is foodapp </h2>
+        <User /> 
+        <UserClass />
+      </div>
+    );
+  };
+  
+  export default About;
+
+
+//   now see we have this two cards .
+
+
+
+// third: how to pass props into the classbased compoennts.
+
+
+//pass the name and the location as a prop .
+
+
+
+//1.passing prop in functional component 
+
+
+
+const User = (props) => {
+    return (
+      <div className="user-card">
+        <h2>Name:{props.name}</h2>
+
+        </div>
+
+        //app.js
+
+        const About = () => {
+            return (
+              <div className="resume">
+                <h1>About</h1>
+                <h2>this is foodapp </h2>
+                <User name={"jatin( functional)"}/> 
+                
+                </div>
+
+
+
+
+//2.passing prop in classBased component 
+
+//app.js
+const About = () => {
+    return (
+      <div className="resume">
+        <h1>About</h1>
+        <h2>this is foodapp </h2>
+        <User name={"jatin( functional)"}/> 
+        <UserClass name={"jatin (class)"}/>
+        </div>
+    );
+};
+
+
+
+class UserClass extends React.Component {
+          
+    constructor(props) {
+        super(props); //why we write super prop in classbased component.
+        console.log(props);
+    }
+    
+    //this render method will return pieace of jsx
+           render() {
+            return (
+            <div className="user-card">
+            <h2>name: {this.props.name}</h2>
+            <h3>Location: {this.props.location}</h3>
+            <h4>contact : @jatin4224 </h4>
+          </div>
+              );
+              }
+
+}
+
+//i can destructer it because this looks ugly 
+
+class UserClass extends React.Component {
+          
+    constructor(props) {
+        super(props); 
+        console.log(props);
+    }
+    
+
+           render() {
+
+            const { name, location } = this.props;
+            return (
+            <div className="user-card">
+            <h2>name: {name}</h2>
+            <h3>Location: {location}</h3>
+            <h4>contact : @jatin4224 </h4>
+          </div>
+                )
+                }
+
+}
+
+
+
+// Q)find out 
+// super(props); // Why do we write 'super(props)' in a class-based component?
+
+
+
+//lets take a break . revise 
+
+
+//Fourth: now il show u how i can create state variable inside class based components.
+
+
+
+//lets create state variable in functional components.
+
+import { useState } from "react";
+
+const User = ({name}) => {
+    const [count] = useState(0);
+    return (
+      <div className="user-card">
+        <h1>Count = {count}</h1>
+        <h2>name: {name}</h2>
+        <h3>Location: kota</h3>
+        <h4>contact : @jatin4224 </h4>
+      </div>
+    );
+  };
+  
+
+
+  //lets create state variables in classBased components.
+  //hooks,functional components are very new in react before there i no hooks so lets see back then how state variables will be created.
+  export default User;
+
+
+  class UserClass extends React.Component {
+          
+    constructor(props) {
+        super(props); 
+        console.log(props);
+
+        this.state = {
+            count: 0,
+        };
+    }
+    
+
+           render() {
+
+            const { name, location } = this.props;
+            const {count} = this.state;
+            return (
+            <div className="user-card">
+                {/* <h1>count: {this.state.count}</h1> */}
+                <h1>Count: {}</h1>
+            <h2>name: {name}</h2>
+            <h3>Location: {location}</h3>
+            <h4>contact : @jatin4224 </h4>
+          </div>
+ )
+   }
+
+
+
+//creating two states.
+
+//functional component
+
+import { useState } from "react";
+
+const User = ({name}) => {
+    const [count] = useState(0);
+    const [count2] = useState(1);
+    
+    return (
+      <div className="user-card">
+        <h1>Count = {count}</h1>
+        <h1>Count2 = {count2}</h1>
+        <h2>name: {name}</h2>
+        <h3>Location: kota</h3>
+        <h4>contact : @jatin4224 </h4>
+      </div>
+    );
+  };
+  
+
+  //classBased component
+
+  class UserClass extends React.Component {
+          
+    constructor(props) {
+        super(props); 
+        console.log(props);
+
+        this.state = {
+            count: 0,
+            count2: 2,
+        };
+    }
+    
+
+           render() {
+
+            const { name, location } = this.props;
+            const {count, count2} = this.state;
+            return (
+            <div className="user-card">
+                {/* <h1>count: {this.state.count}</h1> */}
+                <h1>Count: {count}</h1>
+                <h1>Count: {count2}</h1>
+            <h2>name: {name}</h2>
+            <h3>Location: {location}</h3>
+            <h4>contact : @jatin4224 </h4>
+          </div>
+ )
+   }
+
+
+
+
+
+   //fifth: How to update the state variables.
+//    class UserClass extends React.Component {
+          
+//     constructor(props) {
+//         super(props); 
+//         console.log(props);
+
+//         this.state = {
+//             count: 0,
+//             count2: 2,
+               // count 3 -> react will not update this it will only update the count and count to which we written in button
+//         };
+//     }
+    
+
+//            render() {
+
+//             const { name, location } = this.props;
+//             const {count, count2} = this.state;
+//             return (
+//             <div className="user-card">
+//                 {/* <h1>count: {this.state.count}</h1> */}
+//                 <h1>Count: {count}</h1>
+//             <button 
+//             onClick={()=> {
+//               //never update state variables directly 
+//               this.setState({
+//                 count: this.state.count + 1;
+//              if  u want to update two counts 
+                  //  count2: this.state.count2 + 1;
+//               });
+//             }}
+//             <h2>name: {name}</h2>
+//             <h3>Location: {location}</h3>
+//             <h4>contact : @jatin4224 </h4>
+//           </div>
+//  )
+//    }
+
+
+
+//siXTH: rEACT LIFECYCLE
+

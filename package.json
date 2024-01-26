@@ -1,0 +1,37 @@
+{
+  "name": "reactfoodapp",
+  "version": "1.0.0",
+  "description": "lets create foodapp using react ",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jatin4224/FoodDeliveryApp.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "jatin sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jatin4224/FoodDeliveryApp/issues"
+  },
+  "homepage": "https://github.com/Jatin4224/FoodDeliveryApp#readme",
+  "devDependencies": {
+    "@types/react": "^18.2.48",
+    "parcel": "^2.10.3",
+    "process": "^0.11.10",
+    "sass": "^1.69.6"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.3"
+  },
+  "browsersList": [
+    "last 2 versions"
+  ]
+}

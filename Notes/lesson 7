@@ -1,0 +1,559 @@
+<<<<<<< HEAD
+//reat router
+=======
+/reat router
+>>>>>>> c1e53efad5744832fde256b6d53ac426969d6647
+
+import React, { useEffect } from "react";
+
+//1. how useEffect works
+
+//importing
+import { useState, useEffect } from "react";
+
+//useEffect call using two arguments
+// 1.CALLBACKL FUNCTION
+// 2.DEPENDENCY ARRAY
+
+//imp interview question when this useEffect is called?
+useEffect(() => {
+    console.log("useeffect called")
+}, []);
+
+-use Effect IS CALLED AFTER every time component renders but because we put dependencya rray it changes the behaviour (its not mendatory)
+
+//if no dependency array => useEffect is called on every render.
+//every time its called after every render 
+
+//if dependency array is empty = [] => useEffect is called on initial render(just ones) - not getting called again and again.
+
+//what if we put something on dependency array -> then useEffect is called everytime the dependncy inside and array is updated useEffect is called.
+
+
+When is useEffect called?
+No Dependency Array (useEffect(() => {...})):
+
+Called after every render.
+Empty Dependency Array (useEffect(() => {...}, [])):
+
+Called only once after the initial render (mounting phase).
+With Dependencies (useEffect(() => {...}, [dependency1, dependency2])):
+
+Called after every render if any dependency has changed.
+
+
+
+//part 2
+// useState imp points :
+
+1.never use useState outside of your component
+2.it is used for creating local state variables inside your functional component .
+3.try to call this hooks on the top.so u dont have lot of inconsitency in your ConvolverNode.apply
+4.never used your useState INSIDE A if else .this can create inconsitency in your program 
+5.never create inside for loop, and function .
+6.it meant to be created insdie the functional component on the top .  
+
+
+//PART 3 = REACT ROUTES 
+
+
+for this im using javascript library :
+https://reactrouter.com/en/main
+
+
+
+how to install this library inside our project 
+
+command :
+npm i react-router-dom 
+
+
+1.whenever we have to develope routes we have to create routing configuration 
+open our root componenet app.js 
+
+import {createBrowserRouter} from "react-router-dom";
+
+
+const appRouter = createBrowserRouter ([
+    {
+        path: "/",
+        //load my homepage 
+        element: <AppLayout />,
+    },
+
+    {
+        path:"/about",
+        element: <About />,
+
+    },
+
+    
+])
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<AppLayout />);
+
+//lets creat About us page 
+
+this is your task create about us component u can create about us page by your own u can add your resume there your choice and import it in app.js file 
+
+
+//now  I  have created our configuration now i need to provide this configuration to render it.for that i hvae one more component react dom this 
+// this RouterProvider will provide this routing configuration.
+
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+
+react router provides two component
+1.createBrowserRouter :
+This is the recommended router for all React Router web projects. It uses the DOM History API to update the URL and manage the history stack.
+2.<RouterProvider> :
+All data router objects are passed to this component to render your app and enable the rest of the data APIs.
+
+
+//earlier we just rendering the AppLayout directly.
+<<<<<<< HEAD
+// root.render(<AppLayout />);
+
+
+root.render(<RouterProvider router={appRouter} />);
+=======
+root.render(<AppLayout />);
+
+
+root.render(RouterProvider router={appRouter})
+>>>>>>> c1e53efad5744832fde256b6d53ac426969d6647
+
+
+//so now this will start working u can check by browsing /About. 
+
+
+// note: if u go to the react router documentation u'll se multiple routers over there but i personally suggest u to use the createBrowserRouter.
+<<<<<<< HEAD
+
+
+//lets create another component contact us .
+
+
+
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        //load my homepage 
+        element: <AppLayout />,
+    },
+
+    {
+        path:"/about",
+        element: <About />,
+
+    },
+     {
+        path: "/contact",
+        element: <Contact />
+     }
+])
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter} />);
+
+//check http:url/contact 
+
+//but what if i have random url ?
+
+-for that we have to create Error page 
+//error component 
+const Error = () => {
+    return (
+      <div className="error-container">
+        <h1 className="error-heading">Oops! Something went wrong</h1>
+        <p className="error-message">
+          We're sorry, but it seems like there was an error.
+        </p>
+      </div>
+    );
+  };
+  
+  export default Error;
+
+  import this error in appRouter.js file 
+
+//   and add this to our router configuration
+
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        //load my homepage 
+        element: <AppLayout />,
+        errorElement: <Error />,
+    },
+
+    {
+        path:"/about",
+        element: <About />,
+
+    },
+     {
+        path: "/contact",
+        element: <Contact />
+     }
+])
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter} />);
+
+
+//thers one more feature that react router dom gives us in terms of error.
+
+it gives us a access to a imp hook -> useRouteError   hoe u know its a hook ? its starting from use.it give u more knwdlge of error.
+
+
+how to use it ?
+
+import { useRouteError } from "react-router-dom";   //importing hook in our error page component 
+
+
+const Error = () => {
+    return (
+      <div className="error-container">
+        <h1 className="error-heading">Oops! Something went wrong</h1>
+        <p className="error-message">
+          We're sorry, but it seems like there was an error.
+        </p>
+      </div>
+    );
+  };
+  
+  export default Error;
+
+
+
+  -the best part of react router dom library is they keep updating it very fast.i love this library .
+
+
+  //time for break revise after that i will teach u more cool concepts  of router.
+
+
+//   part 2
+
+
+now i wills how u how we can create children routes in our app.  
+
+-suppose u are working for a client and the client want that in his project the header will remain constant but the other page changes.for example about us 
+page will load below the header .
+// <Header/>
+// <About us/>
+
+to make this functionaly i have to create children routes(imp concept) for my App layout .
+
+
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        //load my homepage 
+        element: <AppLayout />,
+        children: [
+    },
+
+    {
+        path:"/about",
+        element: <About />,
+
+    },
+     {
+        path: "/contact",
+        element: <Contact />
+     },
+     ],
+     errorElement: <Error />,
+]);
+
+
+
+
+
+
+
+
+import React from "react";
+import ReactDOM from "react-dom";
+import Header from "./components/Header";
+import Body from "./components/Body";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import { Component } from "react/cjs/react.production.min";
+
+
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      {/**if path = / */}
+      <Body />
+      {/**if path = /about  */}
+      <About/>
+      {/**if path /contact */}
+      <Contact />
+    </div>
+  );
+};
+
+
+
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        //load my homepage 
+        element: <AppLayout />,
+        children: [
+     {
+        path: "/",
+        element: <Body/>,
+     },
+
+    {
+        path:"/about",
+        element: <About />,
+
+    },
+     {
+        path: "/contact",
+        element: <Contact />
+     },
+     ],
+     errorElement: <Error />,
+]);
+
+
+
+
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter} />);
+
+
+
+
+//now i want to load this children in this outlet accouridng to path 
+<Header />
+{/**if path = / */}
+<Body />
+{/**if path = /about  */}
+<About/>
+{/**if path /contact */}
+<Contact />
+
+
+so again react router dom comes to rescue here it provides us Outlet component .and how to use this Outlet Component.
+whenever the change in the path the Outlet will be filled with the Children.
+
+
+
+import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
+
+
+const AppLayout = () => {
+    return (
+      <div className="app">
+        <Header />
+        <Outlet/>
+      </div>
+    );
+  };
+  
+
+
+  so this is how we create children Routes.
+
+
+  //part 3 linking the routes
+
+
+  now i will show u how we can link them.
+  the client wants from us is he is not writing /about or /contact again anad again in url he want to oepn about us page just by lcicking the about us in Header.
+  //example when i clicl cart on amazon the new page options same we will link it here.
+
+
+  //if ur are thinking using anchor tag i want to tell u never used anchor tag in the react .because it refereshes the whole page.
+  i will tell u one trick which will not even reload our page .  
+  it is again superpower given us by react router dom.  
+
+  -link Component  
+
+
+  //ill import it in my header component file.
+  import {link} from "react-router-dom";
+  this link component works exactly the same as the anchor tag  .
+
+
+
+ // adding link code in our header component
+ <li>Home</li>
+ <li>About us</li>
+ <li>
+ <link to="/contact">Contact Us</link></li>
+ <li>cart</li>
+
+
+ now if u click the contact
+u will see header will not getting affeted and the page is change without reloading the pageXOffset.it just refreshes the Component.  
+that's why our react projects known as single page application,
+
+
+
+there are two types of routing in web apps.
+1.client side routing 
+2.server side routing 
+ 
+
+
+//part4 - dynamic routing
+
+now lets create rest menu page and we will also see how dynamic routing work .
+
+api url -> export const MENU_API =
+"https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";
+
+
+lets create restrau menu page Component.
+
+
+const RestaurantMenu = () => {
+  return (
+    <div className="menu">
+      <h1>Name of the Restaurant</h1>
+      <h2>Menu</h2>
+      <ul>
+        <li>Biryani</li>
+        <li>Burgers</li>
+        <li>Diet Coke</li>
+      </ul>
+    </div>
+  );
+};
+
+export default RestaurantMenu;
+
+
+
+
+now we want to load this component on to the route "/menu "
+
+so i will got the my appRouter,js route configuration and create one more route 
+
+const appRouter = createBrowserRouter([
+  {
+      path: "/",
+      //load my homepage 
+      element: <AppLayout />,
+      children: [
+   {
+      path: "/",
+      element: <Body/>,
+   },
+
+  {
+      path:"/about",
+      element: <About />,
+
+  },
+   {
+      path: "/contact",
+      element: <Contact />
+   },
+   {
+       path: "/restaurants/:resId",  //it means this resId is dynamic. every restaurant has unique id so our routes will be unqique too.
+       element: <RestaurantMenu />
+   },
+   ],
+   errorElement: <Error />,
+]);
+
+//lets check bys earching 
+https:url/menu/123 //  /123 - dynamic id it will change according to the restaurant.
+
+
+now lets do imp stuff let get dynmaically data from the swiggy api when we have this route page  /
+
+
+making api call using useEffect 
+file - RestaurantMenu
+
+
+import { useEffect } from "react";
+
+const RestaurantMenu = () => {
+  useEffect(() => {
+    fetchMenu();
+  }, []);
+
+  const fetchMenu = async () => {
+    const data = await fetch("api-url");
+    const json = await data.json();
+    console.log(json); //check console that we are getting data or not 
+  };
+
+
+
+
+  now lets use this data and show it over here 
+
+
+  <h1>Name of the Restaurant</h1>
+  <h2>Menu</h2>
+  <ul>
+    <li>Biryani</li>
+    <li>Burgers</li>
+    <li>Diet Coke</li>
+
+    for that i have to use state variables - api call will be make the data will put into the state variable and ui will update 
+
+
+
+
+
+
+
+
+
+
+    //react router dom superpower -> hook -> useParams :
+    const {resId} = useParams();
+       
+
+    // now pass this resId into our .url 
+    const fetchMenu = async () => {
+      const data = await fetch(MENU_API + resId);
+      const json = await data.json();
+
+
+      //now i want to make this cards  clickable.
+
+
+
+      i will use a link component i already told u
+
+      lets go to the Body.js and put link to all restaruant cards :
+
+ <div className="res-container">
+        {filteredRestaurant.map((restaurant) => (
+        <link 
+        key={restaurant.info.id}
+         to={"/restaurants/" + restaurant.data.Id}<RestaurantCard  resData={restaurant} />
+        ))}
+      </div>
+
+
+
+      //intresting thing ->  Did you know?  When using #ReactRouter `Link` component, the behind-the-scenes magic happens with an anchor tag!
+
+
+
+      
+=======
+>>>>>>> c1e53efad5744832fde256b6d53ac426969d6647

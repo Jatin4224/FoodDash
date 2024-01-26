@@ -1,0 +1,215 @@
+///lesson 3
+//laying the foundation
+
+writing command npx parcel indexedDB.html to start our project.its little bit frustating writing thsi command again and againa
+so to make our life easier we write scripts
+
+->package.json
+// - "scripts": {
+// "start": "parcel index.html",
+// "build": "parcel build index.html",
+// "test": "jest"
+// },
+
+if u ever go to company and dont know how to start the project go to package.json go to scripts and u will definetly find the commands
+
+so how do we start this scripts ?
+-npm run <name of the script>
+->npm run start u can also do npm start but this work only for start not for build
+
+//part 2
+
+lets start from scratch clear all the code in app.js except import and start coding .
+
+//React.createElement => ReactELement(Object) => HTMLElement(render)
+
+<!-- using react element is not a goodway of writing code  -->
+
+<!-- we will understand about jsx first -->
+
+-What is JSX? JSX stands for JavaScript XML. JSX allows us to write HTML in React. JSX makes it easier to write and add HTML in React.
+-we can write react without using jsx but jsx makes our life easy .
+
+-JSX is not HTML inside JavaScript; JSX is a HTML-like 0r xml-like syntax.
+
+//lets create reactelement using core react.
+const heading = React.createELement(
+"h1",
+{h1: "heading"},
+"hello world");
+
+//now lets create react element using jsx.
+const jsxHeading = <h1 id ="heading"> hello world</h1>;
+
+console.log(jsxHeading);
+
+-always write a code that other developers can understand it.
+
+//now how we can render jsxHeading?
+
+root.render(jsxHeading);
+
+//so from now we will not use react.createElement.
+
+//behind the scenes.
+const jsx = <h1>This is JSX</h1>
+This is simple JSX code in React. But the browser does not understand this JSX because it's not valid JavaScript code. This is because we're assigning an HTML tag to a variable that is not a string but just HTML code.
+
+So to convert it to browser understandable JavaScript code, we use a tool like Babel which is a JavaScript compiler/transpiler.
+
+We can use the above JSX in our React code like this:
+class JSXDemo extends React.Component {
+render() {
+return <h1>This is JSX</h1>;
+}
+}
+
+ReactDOM.render(<JSXDemo />, document.getElementById('root'));
+Here, we're returning the JSX from the JSXDemo component and rendering that on the screen using the ReactDOM.render method.
+
+When the Babel executes the above JSX, it converts it to the following code:
+
+class JSXDemo extends React.Component {
+render() {
+return React.createElement("h1", null, "This is JSX");
+}
+}
+
+//jsx => React.createElement-js object => HTMLElement(render)
+
+-How do I specify a class in JSX?
+-in jsx if u have to give a class u need to give className.
+Attribute class = className
+The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX. Use attribute className instead. JSX solved this by using className instead.
+
+-if u have to use attributes in jsx u have to write it in camelCase.
+
+-when your are writing jsx if your jsx is in a single line -> valid jsx
+code-
+
+const jsxHeading = <h1 className ="heading"> hello world </h1>;
+
+-but it is in mulitple lines we have to wrap it inside a round (brackets)
+code-
+
+const jsxHeading = (<h1 className ="heading">
+hello world
+
+</h1>);
+
+-u can use jsx converter extension on vs code from which u can directly convert your html code to jsx.
+
+//part 3
+
+<!-- lets learn about React components -->
+
+what is react component?
+-there are two types of components
+1.classbased components -> old way (nobody uses now )
+2.functional components -> new way
+
+//lets learn about functional components first
+
+what is functional component?
+-its a normal javascript function which returns some piece of jsx.
+
+- -first rule of creating component is it always start with a capital letter its a react way to understand component.
+
+//observe this syntax carefully ur writing components alot.
+const HeadingComponent = () => {
+return <h1 className="heading"> hello world </h1>;
+};
+
+//some devlopers dont even use return they just write like this.
+
+const HeadingComponent = () =>( <h1
+className="heading"> hello world </h1>
+);
+
+this both code are same.
+
+//nesting jsx
+const HeadingComponent = () => (
+
+  <div id="container">
+   <h1
+className="heading"> hello world </h1>
+);
+;
+const root = ReactDom.createRoot(document.getElementById("root"))
+
+//ill give u small task to read about difference between reactelement and react component.
+
+//now i want to render this heading component into root.
+
+root.render(<HeadingComponent />)
+
+//interview question
+Q)what is component composition?
+-lets understand by example
+
+there are two components one title and other is heading your task i to render title component inside heading component.
+
+- solution
+  import React from "react";
+  import ReactDOM from "react-dom";
+
+const Title = () => (
+
+  <h1 className="head" tabIndex="5">
+    title heading
+  </h1>
+);
+
+const HeadingComponent = () => (
+
+  <div id="container">
+    <Title />//this is how u can do component inside a component
+    <h1 className="heading">hello world</h1>
+  </div>
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<HeadingComponent />);
+
+-u can also write using normal function but i like using arrow function its industry way.
+
+Q)insert this variable inside Heading component
+
+const number = 1000;
+
+const HeadingComponent = () => (
+
+  <div id="container">
+  <h2>{number}</h2>
+    <Title />//this is how u can do component inside a component
+    <h1 className="heading">hello world</h1>
+  </div>
+);
+
+-we can put any pieace of javascript inside jsx using curly brackets.
+
+Q)HOW U CAN PUT REACT ELEMENT INSIDE AND COMPONENT.
+-At the end of the day react element is js variable so u can put it using {}.
+
+Q) how u can put react element inside react element
+-using {}.
+
+example-
+const elem = <span > React element</span>;
+//inject this inside other react element
+const title = 9
+
+ <h1 className="head" tabIndex="5">
+ {elem}
+ hello world 
+ </h1>
+ );
+
+Q)this api is sending some malecious data how u can deal with it?
+const data = api.getData();
+-this type of attack known as cross side scripting
+-jsx is so amazing it takes care of this attacks .jsx will escape it read more about it.
+it wont blindly rrun it your data it sanitize it.
+feel free to use any piece of code.

@@ -1,0 +1,476 @@
+///igniting our app
+
+i hope u understand evey concept in our prev blog lets now learn more about react
+
+//in this blog we will learn about how to make our app go to production ready .
+
+so let me introduce u first thing -
+1.what is npm?
+
+<!-- npm does;t stands for node package manager  -->
+
+//u can give your own name to npm - ill give it name new pop music
+It is a package manager for JavaScript programming language and is the default package manager for Node.js, a popular JavaScript runtime. npm is used to manage and distribute packages (libraries and modules) of reusable JavaScript code. It allows developers to easily install, share, and manage dependencies for their projects
+
+lets add npm in our project
+command-
+1.npm init u can do npm init -y but it will skip some points but i want to show u each point
+2.now it will ask u package name
+-ill give it a name ReactSeries 3.
+3.version: (1.0.0)
+4.description: This is React series
+5.entry point : App.js 6. test command: jest
+7.git repos: url
+8.keywords: react,jatin 9.
+9.author: jatin sharma
+10.licence: "ISC"
+
+now it will ask-
+is this ok?
+yes its okay bro .
+
+-now it has created a json file .
+
+//lets install our dependencies .
+
+the most imp package in our project is - bundler.
+what is bundler?
+-A bundler is a tool that takes all your JavaScript code, along with any other assets like CSS or images, and combines them into a single file (or a few files) that can be served to the browser.
+-it packages your app properly to ship the app to the production .
+
+2.what is parcel/webpack?
+Parcel automatically tracks all of the files, configuration, plugins, and dev dependencies that are involved in your build, and granularly invalidates the cache when something changes. It integrates with low-level operating system APIs to determine what files have changed in milliseconds, no matter the project size
+
+what is package.json?
+Specifics of npm's package.json handling
+This document is all you need to know about what's required in your package.json file. It must be actual JSON, not just a JavaScript object literal.
+A lot of the behavior described in this document is affected by the config settings described in config.
+
+//lets install parrcel in our project
+when u install any dependency u have same command -
+npm install -D parcel
+what is -D?
+-there are two types of dependencies app can have
+1.dev dependencies
+-it means genrally required for develeoping phase
+2.normal dependencies
+-it reuqired for production
+
+for example we need parcel which is dev dependency so this is how we tell to npm we need dev dependincy
+by writing -D
+
+now open the package.json file and u will see-
+
+"devDependencies": {
+"parcel": "^2.8.3"
+}
+hw-read about ^ what is this doing to your app?
+
+//now u will see package-lock.json after u isntalled parcel
+
+what is package-lock.json?
+-it keeps track of every pacakge is installed.
+
+-it keeps the exact version.
+
+Difference between package.json and package-lock.json?
+
+package.json: This file is primarily used for managing and documenting metadata about the project, including its name, version, author, dependencies, scripts, and other configuration details. It acts as a manifest for the project.
+
+package-lock.json: This file is generated and updated automatically by npm when installing or updating packages. It is used to lock the exact versions of dependencies installed in the project, ensuring reproducibility and consistent installations across different environments.
+
+Dependency Specification:
+
+package.json: It contains the list of dependencies required for the project, along with their desired version ranges specified using semantic versioning or specific version numbers.
+
+package-lock.json: It includes the specific resolved versions of all the dependencies, their sub-dependencies, and their exact installation locations. It acts as a snapshot of the dependency tree for ensuring consistent installations.
+
+//one more thing is created in our project -
+node_modules
+
+what is node_modules?is it good to push node_modules to github?
+-The node_modules folder is a folder that is created when you install packages using the Node Package Manager (npm). It stores the packages and their dependencies that your project requires.
+It is generally not a good idea to push the node_modules folder to GitHub. This is because the node_modules folder can be very large and can contain sensitive information, such as API keys. Additionally, the node_modules folder can change frequently, which can make it difficult to track changes to your project.
+If you are working on a team project, it is best to have each team member install the node_modules folder on their own machine. This will help to ensure that everyone is using the same version of the packages and that the node_modules folder is not accidentally pushed to GitHub.
+
+-every package u install has its own package.json and own dependencies.
+
+- the best practice is to keep this node_modules in the file .gitignore.
+
+<!-- - file : .gitignore
+  -/node_modules -->
+
+Q)is it important to put package-lock.json and package.json on to your git repo?
+-yes if u have package.json and package-lock u can recreate your node_modules .
+that is why it is not required to put node_modules on your git.
+
+-whatever u regenrate just dont put it on git.
+
+now lets take a break .
+
+//part 2
+
+now we will write command -
+npx parcel index.html
+
+and now u will see -
+Server running at http-localhost url
+
+congrats u hosted your app on your server.
+localhost.
+parcel is doing this for us.
+
+//what is npx?
+-executing package it will execute the parcel.
+
+NPX is a package executer, and it is used to execute javascript packages directly, without installing them.
+NPX does not install packages, so package pollution on the machine is not a concern.
+The most common application of NPX is the create-react-app command. Since we only need to use it once, i.e., while initializing the project, we do not install it.
+
+//now if u remember we have first injected react in our app usind cdn links right.
+but this is not a prefered way to bring react in our project why?
+-fetching from cdn is costly operation it will fetch react from unpkd.com suppose
+i already have react in my node_modules its more easy as compare to creating react from another network
+
+//so lets see 2nd method of creating react -
+command-
+npm install react
+//have u notice i dont write -D here because i want react as a normal dependency not dev dependency .
+
+now check package.json-
+ull see
+"dependencies": {
+"react": "^18.2.0"
+}
+
+so we have now installed react similarly isntall react dom also
+comand-
+npm i react-dom
+//dont panic npm i is a small version of npm install
+
+now again check package.json
+ull see
+"dependencies": {
+"react": "^18.2.0",
+"react-dom": "^18.2.0"
+}
+
+it means we have succesfully install react and react dom .
+
+now we no longer need cdn so remove it from the index.html file .
+
+lets start our server again and check its working or not.
+oops we got an error -
+Uncaught ReferenceError: React is not defined
+at App.js:8:16
+
+//why this error?
+-we have just installed package but our code does't understand where is this react is coming from?
+-ill use this react in our code ill use it using import keyword.
+
+code- APP.js
+import React from "react";
+import ReactDOM from "react-dom";
+
+now start the server and we will get new error -
+Parcel encountered errors
+@parcel/transformer-js: Browser scripts cannot have imports or exports.
+
+//we need this import we need to tell browser this is not a normal browser scropt its a module we have to write :
+->index.html
+
+- <script type="module" src="./App.js"></script>
+
+//lets explore parcel superpowers:
+-dEV bUILD
+-local server
+-HMR-hot module replacement ->automatic refershing the page
+-parcel uses File watching alogrithem -written in c++ to do HMR.
+-caching - faster builds
+-image optimization
+-minification
+-bundling
+-compress
+-for example - pm modi is react and parcel is amit shah .
+-Consistent Hashing
+-code splitting
+-Differential Bundling - support older browsers
+-Diagnostic
+-good Error handling
+-HTTPS
+--tree shaking- remove unused code
+-Different dev and Prod bundles - to crate prod build u hvae to use command -> npx parcel build index.html
+-Readmore about parcel on parcel documentation.
+-it makes your react app faster.
+
+///to create prod build u hvae to use command -> npx parcel build index.html
+note - u will get the error:
+"description": "lets create foodapp using react ",
+
+> 5 | "main": "App.js",
+> | ^^^^^^^^ Did you mean "App.html"?
+
+to fix this error u have to open package.json and remove-
+"main": "App.js",
+
+now delete the dist file and than write command again
+n -> npx parcel build index.html
+it will again creat dist file with 3 files:
+✨ Built in 871ms
+
+dist\index.html 324 B 1.46s
+dist\index.8d566482.css 84 B 104ms
+dist\index.68db4388.js 138.78 KB 834ms
+
+//now u can delete the parcel-cache file and write command-
+npx parcel index.html
+-it will create .parcel-cache again soo
+we can genrate dist and parcel-cache again right so u know what to do whatever we can regenrate we dont push to github .
+so we can put this on .gitignore .
+
+we push our code to git and server fetches from it and what we write commands server also have that commands the copy of nodemodules in our local is different and ins erver is different server has it own dist folder.thats why we dont put parcel-cache,dist,node modules
+
+now we have build production ready app .
+lets make app comfortable for differetn browsers .
+
+-browser list
+-u have to tell your project what browsers your app will support
+
+configure it in your package.json:
+add
+
+"browsersList": [
+"last 2 versions"
+]
+
+example->
+"browsersList": [
+"last 2 chrome versions",
+"last 2 firefox versions"
+]
+
+this means it might or might not work on other browsers but it will definetly work on chrome and firefox versions.
+
+how to know what to write ? check this website :
+https://browserslist.dev/?q=bGFzdCAyIHZlcnNpb25z
+explore this site.
+
+congrats we have make our app production ready.
+
+///lesson 3
+//laying the foundation
+
+writing command npx parcel indexedDB.html to start our project.its little bit frustating writing thsi command again and againa
+so to make our life easier we write scripts
+
+->package.json
+// - "scripts": {
+// "start": "parcel index.html",
+// "build": "parcel build index.html",
+// "test": "jest"
+// },
+
+if u ever go to company and dont know how to start the project go to package.json go to scripts and u will definetly find the commands
+
+so how do we start this scripts ?
+-npm run <name of the script>
+->npm run start u can also do npm start but this work only for start not for build
+
+//part 2
+
+lets start from scratch clear all the code in app.js except import and start coding .
+
+//React.createElement => ReactELement(Object) => HTMLElement(render)
+
+<!-- using react element is not a goodway of writing code  -->
+
+<!-- we will understand about jsx first -->
+
+-What is JSX? JSX stands for JavaScript XML. JSX allows us to write HTML in React. JSX makes it easier to write and add HTML in React.
+-we can write react without using jsx but jsx makes our life easy .
+
+-JSX is not HTML inside JavaScript; JSX is a HTML-like 0r xml-like syntax.
+
+//lets create reactelement using core react.
+const heading = React.createELement(
+"h1",
+{h1: "heading"},
+"hello world");
+
+//now lets create react element using jsx.
+const jsxHeading = <h1 id ="heading"> hello world</h1>;
+
+console.log(jsxHeading);
+
+-always write a code that other developers can understand it.
+
+//now how we can render jsxHeading?
+
+root.render(jsxHeading);
+
+//so from now we will not use react.createElement.
+
+//behind the scenes.
+const jsx = <h1>This is JSX</h1>
+This is simple JSX code in React. But the browser does not understand this JSX because it's not valid JavaScript code. This is because we're assigning an HTML tag to a variable that is not a string but just HTML code.
+
+So to convert it to browser understandable JavaScript code, we use a tool like Babel which is a JavaScript compiler/transpiler.
+
+We can use the above JSX in our React code like this:
+class JSXDemo extends React.Component {
+render() {
+return <h1>This is JSX</h1>;
+}
+}
+
+ReactDOM.render(<JSXDemo />, document.getElementById('root'));
+Here, we're returning the JSX from the JSXDemo component and rendering that on the screen using the ReactDOM.render method.
+
+When the Babel executes the above JSX, it converts it to the following code:
+
+class JSXDemo extends React.Component {
+render() {
+return React.createElement("h1", null, "This is JSX");
+}
+}
+
+//jsx => React.createElement-js object => HTMLElement(render)
+
+-How do I specify a class in JSX?
+-in jsx if u have to give a class u need to give className.
+Attribute class = className
+The class attribute is a much used attribute in HTML, but since JSX is rendered as JavaScript, and the class keyword is a reserved word in JavaScript, you are not allowed to use it in JSX. Use attribute className instead. JSX solved this by using className instead.
+
+-if u have to use attributes in jsx u have to write it in camelCase.
+
+-when your are writing jsx if your jsx is in a single line -> valid jsx
+code-
+
+const jsxHeading = <h1 className ="heading"> hello world </h1>;
+
+-but it is in mulitple lines we have to wrap it inside a round (brackets)
+code-
+
+const jsxHeading = (<h1 className ="heading">
+hello world
+
+</h1>);
+
+-u can use jsx converter extension on vs code from which u can directly convert your html code to jsx.
+
+//part 3
+
+<!-- lets learn about React components -->
+
+what is react component?
+-there are two types of components
+1.classbased components -> old way (nobody uses now )
+2.functional components -> new way
+
+//lets learn about functional components first
+
+what is functional component?
+-its a normal javascript function which returns some piece of jsx.
+
+- -first rule of creating component is it always start with a capital letter its a react way to understand component.
+
+//observe this syntax carefully ur writing components alot.
+const HeadingComponent = () => {
+return <h1 className="heading"> hello world </h1>;
+};
+
+//some devlopers dont even use return they just write like this.
+
+const HeadingComponent = () =>( <h1
+className="heading"> hello world </h1>
+);
+
+this both code are same.
+
+//nesting jsx
+const HeadingComponent = () => (
+
+  <div id="container">
+   <h1
+className="heading"> hello world </h1>
+);
+;
+const root = ReactDom.createRoot(document.getElementById("root"))
+
+//ill give u small task to read about difference between reactelement and react component.
+
+//now i want to render this heading component into root.
+
+root.render(<HeadingComponent />)
+
+//interview question
+Q)what is component composition?
+-lets understand by example
+
+there are two components one title and other is heading your task i to render title component inside heading component.
+
+- solution
+  import React from "react";
+  import ReactDOM from "react-dom";
+
+const Title = () => (
+
+  <h1 className="head" tabIndex="5">
+    title heading
+  </h1>
+);
+
+const HeadingComponent = () => (
+
+  <div id="container">
+    <Title />//this is how u can do component inside a component
+    <h1 className="heading">hello world</h1>
+  </div>
+);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<HeadingComponent />);
+
+-u can also write using normal function but i like using arrow function its industry way.
+
+Q)insert this variable inside Heading component
+
+const number = 1000;
+
+const HeadingComponent = () => (
+
+  <div id="container">
+  <h2>{number}</h2>
+    <Title />//this is how u can do component inside a component
+    <h1 className="heading">hello world</h1>
+  </div>
+);
+
+-we can put any pieace of javascript inside jsx using curly brackets.
+
+Q)HOW U CAN PUT REACT ELEMENT INSIDE AND COMPONENT.
+-At the end of the day react element is js variable so u can put it using {}.
+
+Q) how u can put react element inside react element
+-using {}.
+
+example-
+const elem = <span > React element</span>;
+//inject this inside other react element
+const title = 9
+
+ <h1 className="head" tabIndex="5">
+ {elem}
+ hello world 
+ </h1>
+ );
+
+Q)this api is sending some malecious data how u can deal with it?
+const data = api.getData();
+-this type of attack known as cross side scripting
+-jsx is so amazing it takes care of this attacks .jsx will escape it read more about it.
+it wont blindly rrun it your data it sanitize it.
+feel free to use any piece of code.
+
+ill see u in our next blog u can click here

@@ -1,0 +1,251 @@
+<!-- lets first start with creating first html program ## 1.what is emmet? -Emmet is
+a built-in feature of VS Code, so it doesn’t require any additional
+installation. By using shorthand and abbreviations, Emmet greatly improves and
+speeds up your HTML and CSS workflow, saving you the stress of having to
+manually type out the code in full. Emmet uses different abbreviations and short
+expressions depending on what’s passed, and then dynamically converts the
+abbreviations into the full code. Emmet is mostly used for HTML, XML, and CSS,
+but it can also be used with programming languages. create html file- //code-
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 React</title>
+  </head>
+  <body>
+    <div id="" root>
+      <h1>Hello world</h1>
+    </div>
+  </body>
+</html>
+
+//now we will create same hello world using javascript //code-
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const heading = document.createElement("h1");
+      heading.innerHTML = "hellow world from javascript";
+
+      const root = document.getElementById("root");
+      root.appendChild(heading);
+    </script>
+  </body>
+</html>
+
+//now lets see how we can do the same thing using react //first thing we do is
+adding react in our project by using cdn. ## 2.what is CDN? why do we use it ? A
+content delivery network (CDN) is a geographically distributed group of servers
+that caches content close to end users. A CDN allows for the quick transfer of
+assets needed for loading Internet content, including HTML pages, JavaScript
+files, stylesheets, images, and videos. The popularity of CDN services continues
+to grow, and today the majority of web traffic is served through CDNs, including
+traffic from major sites like Facebook, Netflix, and Amazon. -benefits of cdn :
+-Improving website load times -Reducing bandwidth costs -Increasing content
+availability and redundancy -Improving website security //first step to copy
+paste the cdn links from this site code-
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+  </body>
+</html>
+
+step 2- there is no step 2 we have react in our project thats it congrats u have
+just learned first method of injecting react inside our project ## 3.have u see
+the crossorigin word inside the code ?what is cross origin? -read this blog and
+learned about cross-origin u can use any other resource also but u should know
+thios concept https://tech2say.hashnode.dev/cors-cross-origin-resource-sharing
+why there are two files ? first file is creaitng react second file is react-dom
+its like bridge connecting the dom. ## 4.what is the difference between React
+and ReactDOM? - 1.React: The react package is the core of the React library. It
+provides the essential functionality for defining and working with React
+components. It includes the logic for components, virtual DOM, and the overall
+structure of React applications. When you write JSX code and use React
+components, you are using the functionality provided by the react package. -
+2.ReactDOM: The react-dom package is responsible for interacting with the DOM
+(Document Object Model). It provides methods for rendering React components into
+the DOM. The ReactDOM.render() method is a key function from this package. It
+takes a React element or component and inserts it into a specified DOM node.
+This package is specifically designed for web applications, as it deals with the
+browser's DOM. now,take a break....
+
+<!-- part 2 -->
+
+//lets finally creat hello world using react create script tag and write this
+code inside the html file code -
+
+<script>
+  const heading = React.createElement("h1", {}, "Hello world from React!");
+  //This line creates a React element using the React.createElement function. It takes three arguments:
+  // The type of the element ("h1" in this case).
+  // An object representing the element's properties (an empty object {} in this example).
+  // The content or children of the element, which is the text node "Hello world from React!".
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  // This line creates a root instance using ReactDom.createRoot. It takes a reference to a DOM element as an argument.
+  // The document.getElementById("root") part gets the DOM element with the ID "root," which is assumed to exist in the HTML document.
+  root.render(heading);
+
+  // The render method of the root instance is called to render the created React element (heading) into the specified root DOM element.
+  // In this case, it inserts the <h1> element with the text "Hello world from React!" into the DOM element with the ID "root.
+</script>
+
+<!-- congratulation for writing your first react app  -->
+
+//part 3 //lets just create a new file named App.js where i'll write all my
+react code
+
+<!-- index.html  -->
+<script src="./App.js"></script>
+
+<!-- app.js code -->
+
+const heading = React.createElement("h1", {}, "Hello world from React!"); const
+root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(heading); //u know the mode expensive thing on webpage is dom
+manipulation and react gives a power to do all this dom manipulation using
+javascript . //we won't be touching more html files now. //now what is this
+object const heading = React.createElement("h1", {}, "Hello world from React!");
+{}-> this object is the place where u give the attribute to a tag . for example
+- if h1 tags have to id heading then we will give this attribute like this-
+const heading = React.createElement("h1", { id: "heading" }, "Hello world from
+React!");
+
+<!-- i can give more attributes -->
+
+const heading = React.createElement("h1", { id: "heading", xyz: "abc" }, "Hello
+world from React!");
+
+<!-- now lets learn how to add css  -->
+
+make css file link it to html file and write #heading { color: red; } u will see
+the hello world from React in red colour now now ill give u small task to go to
+the app.js file and console.log the heading and see the output
+
+<!-- what is react element?this heading is react element and react element is the javascript object at the end of the day  -->
+<!-- and the attributes are props  -->
+
+now what this do - root.render(heading); -its job is basically take the object
+crate that h1 tag that browser understands and put is inside the root element
+.this render method is basically converting objec tto the h1 tag and put it over
+there thats whats happenin gbehind the scenes //part 4 so we learned how we canc
+reate h1 element inside react . but the html structure is not one or two tags
+its complicated right?so ill teach u how u can create nested complicated html
+structure inside React.
+
+<!-- <div id="parent">
+ <div id ="child">
+ <h1>me h1 tag</h1>
+ <h2>me h2 tag</h2>
+ </div>
+  </div>
+  */ -->
+
+<!-- code  -->
+
+const parent = React.createElement( "div", { id: "parent" },
+React.createElement( "div", { id: "child" }, React.createElement("h1", {}, "me
+h1 tag") ) ); ; console.log(parent); //object const root =
+ReactDOM.createRoot(document.getElementById("root")); //rendering parent
+root.render(parent); Q)now try to creaate onw more child h2 tag try it by
+yourself without seeing solution . //solution if u have to give more than one
+children u can convert it to an array const parent = React.createElement( "div",
+{ id: "parent" }, React.createElement("div", { id: "child" }, [
+React.createElement("h1", {}, "me h1 tag"), React.createElement("h2", {}, "me h2
+tag"), ]) ); //ull see and error warning that key is to be different but now
+ignore it ill discuss it later //but this code i very complicated?this is why
+jsx is existwe well learn more about jsx after sometime . //part 5 //does the
+order of this files will matter or not? if u write this file
+<script src="./App.js"></script>
+before link.
+<body>
+  <div id="root"></div>
+  <script src="./App.js"></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+</body>
+
+<<<<<<< HEAD
+it will show error. so the order of this files will always be in sequence so
+always keep react after -->
+=======
+;
+
+console.log(parent); //object
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+//rendering parent
+root.render(parent);
+
+Q)now try to creaate onw more child h2 tag try it by yourself without seeing solution .
+
+//solution
+if u have to give more than one children u can convert it to an array
+
+const parent = React.createElement(
+"div",
+{ id: "parent" },
+React.createElement("div", { id: "child" }, [
+React.createElement("h1", {}, "me h1 tag"),
+React.createElement("h2", {}, "me h2 tag"),
+])
+);
+
+//ull see and error warning that key is to be different but now ignore it ill discuss it later
+
+//but this code i very complicated?this is why jsx is existwe well learn more about jsx after sometime .
+
+//part 5
+//does the
+order of this files will matter or not? if u write this file
+<script src="./App.js"></script>
+before link.
+<body>
+  <div id="root"></div>
+  <script src="./App.js"></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+</body>
+
+it will show error. so the order of this files will always be in sequence so
+always keep react after
+
+.
+
+>>>>>>> c1e53efad5744832fde256b6d53ac426969d6647
