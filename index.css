@@ -227,6 +227,16 @@ button:hover {
 }
 
 .user-card {
-  padding: 10px;
-  border: 14px black;
+  /* background-color: #31363c;  */
+  /* color: #ecf0f1; */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.user-card img {
+  width: 250px;
+  height: 250px;
+  border-radius: 10%;
+  margin-bottom: 20px;
 }
