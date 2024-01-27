@@ -6,7 +6,7 @@ body {
 }
 
 .header {
-  background-color: #bed2e2e4; /* Zomato red color */
+  background-color: #e99292a7; /* Zomato red color */
   color: #ffffff;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -275,4 +275,81 @@ button:hover {
   color: #333;
   font-size: 1rem;
   margin-bottom: 5px;
+}
+.name-head {
+  color: white;
+}
+
+.menu {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.menu h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.menu h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.menu li:last-child {
+  border-bottom: none;
+}
+
+.menu li span {
+  font-weight: bold;
+}
+
+.menu .item-name {
+  flex-grow: 1;
+}
+
+.menu .item-price {
+  font-weight: bold;
+  color: #f44336; /* Swiggy red */
+}
+/* Online Status */
+li.online-status {
+  font-family: "Arial Black", sans-serif;
+  color: white;
+}
+
+/* Dynamic Content (Online Status Emoji) */
+.online-status .status-emoji {
+  color: #00ff00; /* Green when online */
+}
+
+/* Navigation Links */
+li.navigation-link {
+  font-family: "Arial Black", sans-serif;
+  color: white;
+}
+
+.navigation-link a {
+  color: white; /* White color for links */
 }

@@ -16,20 +16,22 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Online Status: {onlineStatus ? "🟢🤗" : "🔴😟"}</li>
-          <li>
+          <li class="online-status">
+            Online Status:
+            <span class="status-emoji">{onlineStatus ? "🟢🤗" : "🔴😟"}</span>
+          </li>
+          <li className="navigation-link">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="navigation-link">
             <Link to="/about">About us</Link>
           </li>
-          <li>
+          <li className="navigation-link">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="navigation-link">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>cart</li>
 
           <button
             className="login"
