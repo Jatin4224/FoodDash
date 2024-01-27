@@ -31,4 +31,19 @@ const RestaurantCard = (props) => {
   );
 };
 
+//Higher order component
+//input - RestaurantCard -> RestaurantCardIsOpen
+export const withOpenLabel = (RestaurantCard) => {
+  //where we receive props ?
+  return (props) => {
+    return (
+      <div>
+        <label>IsOpen</label>
+
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
