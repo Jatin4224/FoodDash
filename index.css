@@ -240,3 +240,39 @@ button:hover {
   border-radius: 10%;
   margin-bottom: 20px;
 }
+
+/* Example CSS for styling the restaurant card */
+.res-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.res-name {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.res-cuisines {
+  color: black;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.res-rating {
+  color: #333; /* Orange color for rating */
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.res-cost,
+.res-delivery-time,
+.res-sla,
+.res-locality {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
