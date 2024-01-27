@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Jatin4224/FoodDeliveryApp#readme",
   "devDependencies": {
+    "@parcel/transformer-babel": "^2.11.0",
     "@types/react": "^18.2.48",
     "parcel": "^2.10.3",
     "process": "^0.11.10",
