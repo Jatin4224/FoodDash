@@ -24,15 +24,15 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
     );
 
-  console.log(categories);
+  // console.log(categories);
   return (
-    <div className="menu">
+    <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{name}</h1>
       <p>
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
       {categories.map((category) => (
-        <RestaurantCategory />
+        <RestaurantCategory data={category?.card?.card} />
       ))}
     </div>
   );
