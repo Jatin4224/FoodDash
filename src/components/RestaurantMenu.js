@@ -14,14 +14,22 @@ const RestaurantMenu = () => {
   const { itemCards } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
-  console.log(itemCards);
+  console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
+  const categories =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
+    );
+
+  console.log(categories);
   return (
     <div className="menu">
       <h1>{name}</h1>
       <h3>{cuisines}</h3>
       <h3>{costForTwoMessage}</h3>
       <h2>Menu</h2>
-
       <ul>
         {itemCards.map((item) => (
           <li key={item.card.info.name}>

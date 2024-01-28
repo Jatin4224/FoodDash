@@ -16,9 +16,11 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li class="online-status">
+          <li className="online-status">
             Online Status:
-            <span class="status-emoji">{onlineStatus ? "🟢🤗" : "🔴😟"}</span>
+            <span className="status-emoji">
+              {onlineStatus ? "🟢🤗" : "🔴😟"}
+            </span>
           </li>
           <li className="navigation-link">
             <Link to="/">Home</Link>
