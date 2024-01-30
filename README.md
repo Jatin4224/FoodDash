@@ -19,4 +19,14 @@ lets talk about component what components our app have
   -Address
   -contact
   \*/
+
 # FoodDash
+
+# Redux toolkit
+
+- Install @reduxjs/toolkit and react-redux
+  -Build our store
+  -connect our store to our app
+  -Slice(cartSlice)
+  -dispatch(action)
+  -selector
