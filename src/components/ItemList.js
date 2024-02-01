@@ -21,7 +21,7 @@ const ItemList = ({ items }) => {
           </div>
           <div className="w-3/12 p-4">
             <div className="absolute"></div>
-            <img src={CDN_URL + item.card.info.imageId} className="w-full" />
+            {/* <img src={CDN_URL + item.card.info.imageId} className="w-full" /> */}
           </div>
         </div>
       ))}
