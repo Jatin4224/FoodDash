@@ -2,6 +2,8 @@ import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
+
 const Header = () => {
   //login/logout feature
   // let btnName = "Login";
@@ -9,6 +11,10 @@ const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
+
+  //subscribing to the store using a selector
+
+  const cartItems = useSelector((store) => store.cart.items);
   return (
     <div className="header">
       <div className="logo-container">
@@ -33,6 +39,9 @@ const Header = () => {
           </li>
           <li className="navigation-link">
             <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="navigation-link">
+            <Link to="/cart">Cart ({cartItems.length} items)</Link>
           </li>
 
           <button
