@@ -1,3 +1,5 @@
+// import { CDN_URL } from "../utils/constants";
+
 const ItemList = ({ items }) => {
   console.log(items);
   return (
@@ -21,7 +23,8 @@ const ItemList = ({ items }) => {
           </div>
           <div className="w-3/12 p-4">
             <div className="absolute"></div>
-            {/* <img src={CDN_URL + item.card.info.imageId} className="w-full" /> */}
+            {/* <h1>heheheh</h1> */}
+            {/* <img src={CDN_URL + cloudinaryImageId} className="w-full" /> */}
           </div>
         </div>
       ))}
