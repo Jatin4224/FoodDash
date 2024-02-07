@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
 
-  const handleAddItem = () => {
+  const handleAddItem = (item) => {
     //dispatch an action
-    dispatch(addItem("pizza"));
+    dispatch(addItem(item));
   };
   return (
     <div>
@@ -32,7 +32,7 @@ const ItemList = ({ items }) => {
             <div className="absolute">
               <button
                 className="p-2 mx-16 rounded-lg bg-black text-white shadow-lg"
-                onClick={handleAddItem}
+                onClick={() => handleAddItem(item)}
               >
                 Add +
               </button>
