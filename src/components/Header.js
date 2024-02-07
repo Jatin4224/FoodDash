@@ -41,7 +41,7 @@ const Header = () => {
             <Link to="/grocery">Grocery</Link>
           </li>
           <li className="navigation-link">
-            <Link to="/cart"> Cart ({cartItems.length} items)</Link>
+            <Link to="/Cart"> Cart ({cartItems.length} items)</Link>
           </li>
 
           <button
