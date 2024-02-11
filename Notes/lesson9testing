@@ -59,3 +59,22 @@ npx jest --init
 -install jsdom library
 
 -create folder name -> **tests** inside components to create all test files.
+
+-we create test function ->
+test("description", () => {
+const result = sum(3,4);
+
+          //assertion
+          expect(result).test(7);
+
+})
+
+## -to make jsx work in testing install library
+
+-npm i @babel/preset-react - to make jsx work in testing
+-include @babel/preset-react inside my babel config
+
+- ["@babel/preset-react", { runtime: "automatic" }],
+
+-install
+npm i -D @testing-library/jest-dom

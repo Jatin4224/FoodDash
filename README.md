@@ -46,3 +46,7 @@ lets talk about component what components our app have
 -configure parcel config file to disable default babel transpilation
 -jest configuration
 -install jsdom library
+-npm i @babel/preset-react - to make jsx work in testing
+-include @babel/preset-react inside my babel config
+-install
+-npm i -D @testing-library/jest-dom
