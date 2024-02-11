@@ -47,3 +47,15 @@ codee -
 
 -ommand to run test cases
 npm run test
+
+//before starting writing test cases we have to do one more configuration - jest configuration.
+
+command -
+npx jest --init
+-no typescript
+-js dom or node?-> we choose js dom because js dom is a librabry which gives features of browser.
+-add coverage reports ->yes-> bable
+
+-install jsdom library
+
+-create folder name -> **tests** inside components to create all test files.

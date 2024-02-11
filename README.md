@@ -44,3 +44,5 @@ lets talk about component what components our app have
 -installed babel dependencies
 -configure babel
 -configure parcel config file to disable default babel transpilation
+-jest configuration
+-install jsdom library
