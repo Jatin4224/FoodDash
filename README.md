@@ -30,3 +30,17 @@ lets talk about component what components our app have
   -Slice(cartSlice)
   -dispatch(action)
   -selector
+
+## types of testing
+
+-unit testing
+-integration testing
+-end to end testing
+
+## setting up testing in our app
+
+-install react testing librabry
+-installed jest
+-installed babel dependencies
+-configure babel
+-configure parcel config file to disable default babel transpilation

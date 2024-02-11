@@ -26,3 +26,24 @@ whenever we use jest with babel we have to install some additional dependencies.
 
 - install
   npm install --save-dev babel-jest @babel/core @babel/preset-env
+
+//now this depependies conflict with babel and parcel.
+because parcel already uses babel inside it.
+
+-we have to change parcels behaviour we have to make some changes in the parcel.
+-read parcel documentation->javascript->babel part
+
+by creating .parcelrc file and
+codee -
+{
+"extends": "@parcel/config-default",
+"transformers": {
+"\*.{js,mjs,jsx,cjs,ts,tsx}": [
+"@parcel/transformer-js",
+"@parcel/transformer-react-refresh-wrap"
+]
+}
+}
+
+-ommand to run test cases
+npm run test
