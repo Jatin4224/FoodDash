@@ -1,0 +1,28 @@
+-1)manual testing - normal testing  
+-2)code for testing (test cases)
+-there are three types of testing a developer can do
+1)unit testing
+-u test your react component in isolation.
+2)integrration testing
+-there are mulitple components to test .
+
+- 3)end to end testing - e2e testing
+  -testing a react application as soon as user landing on page till user leaving the app
+
+//react testing libraries
+
+-install
+https://testing-library.com/docs/react-testing-library/intro/
+
+-react testing library is already integrated in create react app.
+
+-React testing library needs -> jest (javascript testing framework )
+https://jestjs.io/docs/getting-started
+
+- install
+  npm i -D jest
+
+whenever we use jest with babel we have to install some additional dependencies.
+
+- install
+  npm install --save-dev babel-jest @babel/core @babel/preset-env
