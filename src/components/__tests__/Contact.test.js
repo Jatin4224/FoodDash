@@ -2,42 +2,46 @@ const { render, screen } = require("@testing-library/react");
 import Contact from "../Contact";
 import "@testing-library/jest-dom";
 
-test("should load contact us component", () => {
-  render(<Contact />);
+//grouping test cases
 
-  const heading = screen.getByRole("heading");
+describe("Contact us page Test Case", () => {
+  test("should load contact us component", () => {
+    render(<Contact />);
 
-  //assertion
-  expect(heading).toBeInTheDocument();
-});
+    const heading = screen.getByRole("heading");
 
-//test case for button
-test("should load button inside Contact component", () => {
-  render(<Contact />);
+    //assertion
+    expect(heading).toBeInTheDocument();
+  });
 
-  const button = screen.getByRole("button");
+  //test case for button
+  test("should load button inside Contact component", () => {
+    render(<Contact />);
 
-  //assertion
-  expect(button).toBeInTheDocument();
-});
+    const button = screen.getByRole("button");
 
-//test case name
-test("should load input name  inside Contact component", () => {
-  render(<Contact />);
+    //assertion
+    expect(button).toBeInTheDocument();
+  });
 
-  const inputName = screen.getByPlaceholderText("name");
+  //test case name
+  it("should load input name  inside Contact component", () => {
+    render(<Contact />);
 
-  //assertion
-  expect(inputName).toBeInTheDocument();
-});
+    const inputName = screen.getByPlaceholderText("name");
 
-//test for load 2 input boxes
-test("should load 2 input boxes ont he contact component", () => {
-  render(<Contact />);
-  //for multiple items -  use getALLByRole
-  const inputBoxes = screen.getAllByRole("textbox");
-  console.log(inputBoxes.length);
+    //assertion
+    expect(inputName).toBeInTheDocument();
+  });
 
-  //Assertion
-  expect(inputBoxes.length).toBe(2);
+  //test for load 2 input boxes
+  test("should load 2 input boxes ont he contact component", () => {
+    render(<Contact />);
+    //for multiple items -  use getALLByRole
+    const inputBoxes = screen.getAllByRole("textbox");
+    console.log(inputBoxes.length);
+
+    //Assertion
+    expect(inputBoxes.length).toBe(2);
+  });
 });
