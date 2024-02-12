@@ -1,0 +1,67 @@
+{
+  "info": {
+    "id": "677833",
+    "name": "Chinese Wok",
+    "cloudinaryImageId": "e0839ff574213e6f35b3899ebf1fc597",
+    "locality": "Rajender Nagar",
+    "areaName": "Sahibabad",
+    "costForTwo": "₹250 for two",
+    "cuisines": ["Chinese", "Asian", "Tibetan", "Desserts"],
+    "avgRating": 3.9,
+    "parentId": "61955",
+    "avgRatingString": "3.9",
+    "totalRatingsString": "100+",
+    "sla": {
+      "deliveryTime": 23,
+      "lastMileTravel": 2.4,
+      "serviceability": "SERVICEABLE",
+      "slaString": "20-25 mins",
+      "lastMileTravelString": "2.4 km",
+      "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+      "nextCloseTime": "2024-02-13 01:00:00",
+      "opened": true
+    },
+    "badges": {},
+    "isOpen": true,
+    "type": "F",
+    "badgesV2": {
+      "entityBadges": {
+        "imageBased": {},
+        "textBased": {},
+        "textExtendedBadges": {}
+      }
+    },
+    "aggregatedDiscountInfoV3": {
+      "header": "50% OFF",
+      "subHeader": "UPTO ₹100"
+    },
+    "orderabilityCommunication": {
+      "title": {},
+      "subTitle": {},
+      "message": {},
+      "customIcon": {}
+    },
+    "differentiatedUi": {
+      "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+      "differentiatedUiMediaDetails": {
+        "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+        "lottie": {},
+        "video": {}
+      }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {}
+  },
+  "analytics": {
+    "context": "seo-data-cd614ce4-ae13-4bf3-8549-5c0638d9082c"
+  },
+  "cta": {
+    "link": "https://www.swiggy.com/restaurants/chinese-wok-rajender-nagar-sahibabad-noida-677833",
+    "text": "RESTAURANT_MENU",
+    "type": "WEBLINK"
+  },
+  "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}

@@ -158,3 +158,5 @@ expect(loginButton).toBeInTheDocument();
 });
 
 -FireEvent -> imported from testing library react.
+
+-we will create mockdata for testing rstaurant card resData.
