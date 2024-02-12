@@ -12,7 +12,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="text-center mx-auto max-w-lg p-4">
+    <div className="text-center mx-auto  p-4">
       <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
 
       <div className="bg-white rounded-lg shadow-md overflow-hidden">

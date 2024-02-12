@@ -129,3 +129,32 @@ console.log(inputBoxes.length);
 
 -we can also write it instead of test.
 -do not need to push coverage folder to git put it inside git ignore.
+
+//now we have to check when we load header we have loging button and cart with 0 items or not.
+-our jest do not understand redux so we have to provide redux store.same for react router dom.
+
+eg-
+it("should load Header component with a loign button", () => {
+render(
+<BrowserRouter>
+<Provider store={appStore}>
+
+<Header />
+</Provider>
+</BrowserRouter>
+);
+  const loginButton = screen.getByRole("button"); //good way
+
+expect(loginButton).toBeInTheDocument();
+});
+});
+
+//suppose there are multiple buttons and i want to find out login button only
+
+const loginButton = screen.getByRole("button",{name: "Login}); //good way
+
+expect(loginButton).toBeInTheDocument();
+});
+});
+
+-FireEvent -> imported from testing library react.
