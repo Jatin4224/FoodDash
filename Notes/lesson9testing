@@ -160,3 +160,19 @@ expect(loginButton).toBeInTheDocument();
 -FireEvent -> imported from testing library react.
 
 -we will create mockdata for testing rstaurant card resData.
+
+////integration testing
+
+-testing search functionality.
+-very imp ->in our Body component we have fetch ,when we test body component when we write render it renders on js dom (browser like) it does't have superpowers of browser.and fetch is browser superpower.so jest dont understand fetch.
+-we have to write mock function for our fetch .
+
+- "watch-test": "jest --watch" in package.json so test cases dont stop .
+  -write command-> npm run watch-test
+
+--whenever using fetch,state updates wrap render inside act() function. comes from react-dom/test-utils;
+-use async await when usign act.
+
+eg- it("should render the Body component with Search", async () => {
+await act(async () => render(<Body />));
+});
