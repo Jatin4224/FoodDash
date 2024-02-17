@@ -28,7 +28,11 @@ const Cart = () => {
 
         {cartItems.length === 0 && (
           <div className="p-4 text-center text-gray-600">
-            Your cart is empty. Start adding items!
+            <img
+              src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"
+              className="w-40 h-50 text-center"
+            />
+            Your card is empty!!
           </div>
         )}
 
