@@ -2,6 +2,7 @@ import { CDN_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+  console.log(resData);
   const {
     cloudinaryImageId,
     name,
@@ -13,7 +14,7 @@ const RestaurantCard = (props) => {
     locality,
   } = resData?.info;
   return (
-    <div className="m-4 p-4 w-full md:w-[300px] rounded-lg hover:shadow-lg">
+    <div className="m-4 p-4 w-[300px] rounded-lg  hover:shadow-lg ">
       <img
         className="rounded-lg shadow-md"
         src={CDN_URL + cloudinaryImageId}
@@ -30,12 +31,15 @@ const RestaurantCard = (props) => {
   );
 };
 
-// Higher order component
+//Higher order component
+//input - RestaurantCard -> RestaurantCardIsOpen
 export const withOpenLabel = (RestaurantCard) => {
+  //where we receive props ?
   return (props) => {
     return (
       <div>
         <label>IsOpen</label>
+
         <RestaurantCard {...props} />
       </div>
     );
