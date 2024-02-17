@@ -27,7 +27,7 @@ class UserClass extends React.Component {
       <div className="user-card bg-white p-6 rounded-lg ">
         <img
           src={avatar_url}
-          className="w-24 h-24 rounded-full mx-auto mb-4"
+          className=" rounded-md mx-auto mb-4"
           alt="User Avatar"
         />
         <h2 className="text-xl font-bold mb-2">{bio}</h2>
